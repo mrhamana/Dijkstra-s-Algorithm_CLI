@@ -6,7 +6,7 @@
 #include <vector>
 #include <tuple>
 
-#define INF 999999999999
+#define INF 9999
 using namespace std;
 
 template <typename T>
@@ -72,7 +72,7 @@ public:
         }
 
         this->adj_matrix[x][y] = dist;
-    }
+        }
 
     void djastra(T a)
     {
@@ -123,14 +123,129 @@ public:
 
 int main()
 {
-    Graph<char> g;
-    vector<char> nodes = {'a', 'b', 'c', 'd', 'e'};
-    g.addNodes(nodes);
-    g.addEdge('a', 'c', 4);
-    g.addEdge('a', 'b', 1);
-    g.addEdge('b', 'e', 2);
-    g.addEdge('b', 'd', 2);
-    g.addEdge('d', 'e', 3);
-    g.djastra('a');
-    return 0;
+    Graph<string> g;
+    std::vector<std::string> places = {
+        "Thimi", "Dulikhel", "RingRoad", "Pokhara", "Thamel",
+        "Kathmandu", "Lumbini", "Chitwan", "Janakpur", "Biratnagar",
+        "Illam", "Birgunj", "Hetauda", "Narayanghat", "Jomsom",
+        "Muktinath", "Nagarkot", "Bhaktapur", "Patan", "Dhulikhel",
+        "Bhadrapur", "Kakarbhitta", "Bandipur", "Gorkha", "Sarangkot",
+        "BegnasLake", "PhewaLake", "Gosaikunda", "Langtang", "NamcheBazaar",
+        "Lukla", "EverestBaseCamp", "Manang", "ThorongLaPass", "Beni",
+        "Ghorepani", "PoonHill", "Kanyam", "Tansen", "Palpa",
+        "Butwal", "SiddhababaTemple", "Dharan", "Bhedetar", "Barahachhetra",
+        "Okhaldhunga", "Solukhumbu", "Ramechhap", "Jiri", "Phaplu",
+        "Salleri", "Khandbari", "Tumlingtar"};
+
+    g.addNodes(places);
+    g.addEdge("Kathmandu", "Pokhara", 200);
+
+    g.addEdge("Pokhara", "Lumbini", 150);
+
+    g.addEdge("Kathmandu", "Lumbini", 250);
+
+    g.addEdge("Kathmandu", "Chitwan", 160);
+
+    g.addEdge("Chitwan", "Lumbini", 100);
+
+    g.addEdge("Kathmandu", "Janakpur", 225);
+
+    g.addEdge("Janakpur", "Biratnagar", 150);
+
+    g.addEdge("Biratnagar", "Illam", 120);
+
+    g.addEdge("Kathmandu", "Birgunj", 180);
+
+    g.addEdge("Birgunj", "Hetauda", 50);
+
+    g.addEdge("Hetauda", "Narayanghat", 80);
+
+    g.addEdge("Narayanghat", "Pokhara", 120);
+
+    g.addEdge("Pokhara", "Jomsom", 160);
+
+    g.addEdge("Jomsom", "Muktinath", 20);
+
+    g.addEdge("Kathmandu", "Nagarkot", 32);
+
+    g.addEdge("Nagarkot", "Bhaktapur", 15);
+
+    g.addEdge("Bhaktapur", "Patan", 18);
+
+    g.addEdge("Patan", "Kathmandu", 5);
+
+    g.addEdge("Kathmandu", "Dhulikhel", 30);
+
+    g.addEdge("Dhulikhel", "Bhadrapur", 400);
+
+    g.addEdge("Bhadrapur", "Kakarbhitta", 25);
+
+    g.addEdge("Kathmandu", "Bandipur", 140);
+
+    g.addEdge("Bandipur", "Gorkha", 60);
+
+    g.addEdge("Gorkha", "Pokhara", 90);
+
+    g.addEdge("Pokhara", "Sarangkot", 10);
+
+    g.addEdge("Pokhara", "BegnasLake", 15);
+
+    g.addEdge("Pokhara", "PhewaLake", 5);
+
+    g.addEdge("Kathmandu", "Gosaikunda", 100);
+
+    g.addEdge("Gosaikunda", "Langtang", 40);
+
+    g.addEdge("Kathmandu", "NamcheBazaar", 250);
+
+    g.addEdge("NamcheBazaar", "Lukla", 30);
+
+    g.addEdge("Lukla", "EverestBaseCamp", 130);
+
+    g.addEdge("Kathmandu", "Manang", 300);
+
+    g.addEdge("Manang", "ThorongLaPass", 40);
+
+    g.addEdge("Kathmandu", "Pokhara", 200);
+
+    g.addEdge("Pokhara", "Beni", 80);
+
+    g.addEdge("Beni", "Ghorepani", 50);
+
+    g.addEdge("Ghorepani", "PoonHill", 5);
+
+    g.addEdge("Kathmandu", "Ilam", 600);
+
+    g.addEdge("Ilam", "Kanyam", 20);
+
+    g.addEdge("Kathmandu", "Tansen", 300);
+
+    g.addEdge("Tansen", "Palpa", 10);
+
+    g.addEdge("Palpa", "Butwal", 40);
+
+    g.addEdge("Butwal", "SiddhababaTemple", 15);
+
+    g.addEdge("Kathmandu", "Dharan", 450);
+
+    g.addEdge("Dharan", "Bhedetar", 20);
+
+    g.addEdge("Dharan", "Barahachhetra", 35);
+
+    g.addEdge("Kathmandu", "Okhaldhunga", 350);
+
+    g.addEdge("Okhaldhunga", "Solukhumbu", 100);
+
+    g.addEdge("Kathmandu", "Ramechhap", 150);
+
+    g.addEdge("Ramechhap", "Jiri", 50);
+
+    g.addEdge("Jiri", "Phaplu", 60);
+
+    g.addEdge("Phaplu", "Salleri", 10);
+
+    g.addEdge("Salleri", "Khandbari", 150);
+
+    g.addEdge("Khandbari", "Tumlingtar", 30);
+    g.djastra("Kathmandu");
 }
